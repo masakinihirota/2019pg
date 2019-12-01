@@ -1,0 +1,126 @@
+#初期化
+要素数だけ指定して宣言しても、
+自動的にすべて0で埋められるため
+安全にアクセスできます。
+
+#コピー
+//vec1の要素をすべてコピー
+vector<int> vec1{ 1, 2, 3, 4, 5 };
+vector<int> vec5(vec1);
+
+//vec1[1]からvec[3]手前までをコピー
+vector<int> vec6(vec1.begin() + 1, vec1.begin() + 3);
+
+vector<int> vec1{ 1, 2, 3, 4, 5 };
+vector<int> vec2{ 9, 8, 7 };
+//vec2にvec1の要素をすべてコピー
+vec2 = vec1;
+
+#使い方の基本
+int n;
+cin >> n;
+vi l(n);
+rep(i, n) {
+cin >> l[i];
+}
+
+#指定 index の削除
+vector.erase(vector.begin() + index);
+
+#ループ内で vector の要素の削除
+ポイントは、numbers.erase(itr)の返り値を itr に代入する事。
+erase(itr)は要素を削除し、その次の要素を返す。
+auto itr = numbers.begin();
+while (itr != numbers.end())
+{if(((*itr) == a) || ((*itr) == b))
+{itr = numbers.erase(itr);}
+else
+{itr++;}}
+
+
+
+#vector の一部である [first, last) を削除する
+erase(first, last) : iterator
+例
+vector<int> v{3, 1, 4, 1, 5};
+v.erase(v.begin() + 1, v.begin() + 3);
+// 1, 4 を削除
+
+
+#resize
+vector<vector<int>> vec(M);
+int k; cin >> k;
+vec[i].resize(k);
+
+#vector の合計
+#accumulate
+#define all(x) (x).begin(), (x).end()
+accumulate(all(a), 2.0);
+accumulate(a.begin(), a.end(), 0.0);
+
+第三引数は初期値
+0 を入れると整数（vector が実数だと丸められてしまう）
+0.0 を入れると実数
+
+#vector の主なメンバ関数
+push_back(2) 要素の追加
+push_front(3); // 前にデータを挿入
+clear() 要素のクリア
+size() 配列の大きさを得る関数
+capacity() 動的配列に追加できる要素の許容量
+empty() 要素が空かどうかを調べる
+
+#
+
+vector<int> v = {1, 2, 3};
+v.pop_back(); //一番上を削除
+v.pop_back();
+v.push_back(3);//一番上に追加
+cout << sz(v) << endl;
+for_each(v.begin(), v.end(),
+[](int x) { cout << x << endl; });
+
+#x に insert していくことで同じ数が上書きされる。
+set<int> x;
+x.insert(a);
+x.insert(b);
+x.insert(c);
+// このサイズが重複のない数
+cout << x.size() << endl;
+
+vector の要素へのアクセス
+配列の[]と書く
+
+逆順にアクセスする
+rbegin()と rend()。
+
+
+#vectorの二次元配列
+// 入力
+int N     = 5;  // N 行数
+int D     = 3;  // D 列数
+int value = 1;  // value 初期値
+// cin >> N >> D;	// 入力
+// X vectorの変数
+vector<vector<int>> X(N, vector<int>(D, value));
+//vector<vi> X(N, vi(D, value));
+for (int i = 0; i < N; ++i) {
+    for (int j = 0; j < D; ++j) {
+        cin >> X[i][j];
+    }
+}
+
+#二次元配列
+vector<vector<int> > vc;
+
+#二次元配列 要素数の指定
+int a, b;
+vector<vector<int> > vc(a, vector<int>(b)); // vc[a][b]と同じ
+
+#三次元配列
+int a, b, c;
+vector<vector<vector<int>>> vc;
+
+#三次元配列 要素数の指定
+int a, b, c;
+vector<vector<vector<int>>> vc(a, vector<vector>int>>(b, vector<int>(c)));

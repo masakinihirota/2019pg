@@ -1,0 +1,21 @@
+推測される数字を全部列挙する
+
+ABC114C
+C - 755
+https://atcoder.jp/contests/abc114/tasks/abc114_c
+
+3 5 7 をそれぞれ1回以上使う数字を列挙する。
+
+vll  enumeration;
+void func(ll n) {
+    if (n < 1e9) {
+        enumeration.push_back(n);
+        func(n * 10 + 3);
+        func(n * 10 + 5);
+        func(n * 10 + 7);
+    }
+}
+
+main(){
+    func(0);
+}

@@ -1,0 +1,31 @@
+#絶対値
+abs
+abs(s1 - s2);
+
+#最小値，最大値のイテレータを返してくれる関数
+vector<int> vec;
+vec = {3, 6, 8, 2};
+// *_element は，イテレーターを返すので '*' で値を取得する
+int min = *min_element(vec.begin(), vec.end());
+int max = *max_element(vec.begin(), vec.end());
+// 出力
+cout << min << endl;
+cout << max << endl;
+
+#総和 すべての要素の合計
+int list[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+const size_t size = sizeof(list) / sizeof(list[0]);
+int sum = accumulate(list, list + size, 0);
+// ans = 55
+
+#変換
+string src ="abc";
+string dst = src;
+
+// src と dst のサイズが同じでなければダメ。
+// src と dst に関してループを回して toupper を適応している
+transform(src.begin(), src.end(), dst.begin(), toupper);
+// toupper に値する関数が好きに指定できることが特徴．
+tolower等
+
+

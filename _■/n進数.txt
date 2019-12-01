@@ -1,0 +1,54 @@
+#技術室奥プログラミングコンテスト#4 Day1
+#C - 異世界転生
+
+#include <bits/stdc++.h>
+using namespace std;
+
+class Radix {
+   private:
+    const char* s;
+    int         a[128];
+
+   public:
+    Radix(const char* s = "0123456789ABCDEF") : s(s) {
+        int i;
+        for (i = 0; s[i]; ++i) a[(int)s[i]] = i;
+    }
+    std::string to(long long p, int q) {
+        int i;
+        if (!p) return "0";
+        char t[64] = {};
+        for (i = 62; p; --i) {
+            t[i] = s[p % q];
+            p /= q;
+        }
+        return std::string(t + i + 1);
+    }
+    string    to(const string& t, int p, int q) { return to(to(t, p), q); }
+    long long to(const string& t, int p) {
+        int       i;
+        long long sm = a[(int)t[0]];
+        for (i = 1; i < (int)t.length(); ++i) sm = sm * p + a[(int)t[i]];
+        return sm;
+    }
+};
+
+int main() {
+    ll     n;
+    string x;
+    cin >> n >> x;
+
+    int size = x.size();
+    int base = 2;
+    rep(i, size) { base = max(base, x[i] - '0'); }
+
+    string s;
+    for (int i = 10; i >= base; i--) {
+        Radix r;
+        if (x == r.to(n, i)) {
+            cout << i << endl;
+            // cout << "i= " << i << " " << r.to(n, i) << endl;
+        }
+    }
+    return 0;
+}

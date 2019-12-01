@@ -1,0 +1,19 @@
+ABC71B
+string s;
+cin >> s;
+// 処理
+vector<char> c;
+for (int i = 97; i < 123; i++) {
+    if (count(all(s), (char)i) == 0) c.push_back((char)i);
+}
+sort(all(c));
+// 出力
+if (c.size() == 0)
+    cout << "None" << endl;
+else
+    cout << c[0] << endl;
+
+
+#
+for (char i = 'a'; i <= 'z'; i++)
+

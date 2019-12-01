@@ -1,0 +1,30 @@
+#forで回す
+set<int> s;
+for(set<int>::iterator it = s.begin();it = s.end(); it++){
+}
+
+
+#include <iostream>
+#include <vector>
+using namespace std;
+int main() {
+	int n;
+	cin >> n;
+	vector<int> vc;
+	while(n--) {
+		int x;
+		cin >> x;
+		vc.push_back(x);
+	}
+	// vector<T>のイテレータはvector<T>::iterator型
+	vector<int>::iterator it = vc.begin();
+    // begin()はvectorの最初の要素を指すイテレータを返す。
+	vector<int>::iterator endIt = vc.end();
+    // end()はvectorの終端位置を指すイテレータを返す。
+	while(it != endIt) {
+		cout << *it << '\n';
+        // イテレータの指す要素は、ポインタのように*演算子でアクセスします。
+		it++;
+        // インクリメントすることで次の要素を指します。
+	}
+}

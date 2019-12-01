@@ -1,0 +1,25 @@
+#重複削除
+
+##文字列の重複削除
+// 入力
+string s;
+cin >> s;
+// 処理
+int temp_s = s.size();
+sort(s.begin(), s.end());
+s.erase(unique(s.begin(), s.end()), s.end());
+
+
+##文字列から重複する文字列がある場合No
+vector<string> str(n);
+string s;
+rep(i, n) {
+    s = str[i];
+    if (count(all(str), s) != 1) {
+        cout << "No" << endl;
+    }
+}
+
+
+if (s.find('r') != -1) cnt++;
+findを使うときは、見つからなかった時以外と2重否定

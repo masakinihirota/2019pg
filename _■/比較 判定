@@ -1,0 +1,29 @@
+#文字列の中で数字かどうかを判断する
+cout << (isdigit(c) ? "Yes" : "No") << endl;
+
+
+
+//3つの比較
+if ( > ) {
+    cout << ">" << endl;
+} else if ( < ) {
+    cout << "<" << endl;
+} else {
+    cout << "=" << endl;
+}
+
+//2つの比較 表示 三項演算子
+cout << ((n % 500 <= a) ? "Yes" : "No") << endl;
+
+//5つの比較
+if ( > ) {
+    cout << ">" << endl;
+} else if ( < ) {
+    cout << "<" << endl;
+} else if ( < ) {
+    cout << "<" << endl;
+} else if ( < ) {
+    cout << "<" << endl;
+} else {
+    cout << "=" << endl;
+}

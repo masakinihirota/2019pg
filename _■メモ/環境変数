@@ -1,0 +1,18 @@
+export TEST="This is a test global variable"
+printenv TEST
+
+
+
+パス
+~/.profile
+export PATH="$PATH:/mnt/y/2019/pg"
+
+source ~/.profile
+
+エイリアス
+~/.bashrc
+alias ppt='POWERPNT.EXE'
+alias el='EXCEL.EXE'
+alias word='WINWORD.EXE'
+alias adobe='AcroRd32.exe'
+

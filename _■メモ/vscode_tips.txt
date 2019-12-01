@@ -1,0 +1,18 @@
+Visual Studio Codeのうれしい機能を使いこなして、初心者を最速で脱出する！《VScode実践入門》 - エンジニアHub｜若手Webエンジニアのキャリアを考える！
+https://employment.en-japan.com/engineerhub/entry/2019/06/21/103000#%E3%82%A4%E3%83%B3%E3%83%86%E3%83%AA%E3%82%BB%E3%83%B3%E3%82%B9
+
+マルチカーソル
+
+Alt + Shift + I
+選択範囲の末尾をカーソル化する
+
+Ctrl + Shift + L
+同じ単語を全選択する
+
+Ctrl + D
+
+Ctrl + Shift + →
+キーを選択
+
+Ctrl + Alt ↑↓
+マルチカーソルの範囲拡大

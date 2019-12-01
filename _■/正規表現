@@ -1,0 +1,13 @@
+int main() {
+    string s;
+    cin >> s;
+
+    if ( regex_match(s, regex("A?KIHA?BA?RA?")) ) {
+        puts("YES");
+    } else {
+        puts("NO");
+    }
+
+    return 0;
+}
+

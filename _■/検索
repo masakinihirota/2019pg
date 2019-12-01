@@ -1,0 +1,11 @@
+
+#int検索
+find
+
+#ABC122C
+#”AC"2文字検索 Cを発見したら+1
+for (int i = 1; i < n; ++i) {
+    if (s[i] == 'C' && s[i - 1] == 'A') sum[i] = 1;
+    sum[i] += sum[i - 1];
+}
+rep(i, n) { cout << sum[i] << endl; }

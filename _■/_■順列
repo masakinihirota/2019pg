@@ -1,0 +1,58 @@
+順列
+next_permutationの使用例
+全てのパターンを並べる
+
+next_permutationがイマイチよくわからなかったのでまとめてみた - Qiita
+https://qiita.com/Nikkely/items/0ddca51b3c0e60afbaab
+
+//vector版
+#include <bits/stdc++.h>
+using namespace std;
+#define vi vector<int>
+
+int main() {
+    vi v;
+    v = {1, 2, 3};
+
+    do {
+        for (int i = 0; i < 3; i++) {
+            cout << v[i] << " ";
+        }
+        cout << endl;
+    } while (next_permutation(v.begin(), v.end()));
+}
+
+
+//array版
+#include <algorithm>
+#include <iostream>
+
+int main() {
+    int array[] = {1, 2, 3};
+
+    do {
+        for (int i = 0; i < 3; i++) {
+            std::cout << array[i] << " ";
+        }
+        std::cout << std::endl;
+    } while (std::next_permutation(array, array + 3));
+}
+
+結果
+1 2 3
+1 3 2
+2 1 3
+2 3 1
+3 1 2
+3 2 1
+
+
+
+ABC145のC
+for (int i = 0; i < N; i++) v[i] = i + 1;
+do {
+    for (int i = 0; i < N - 1; i++) sum += dist(v[i], v[i + 1]);
+} while (next_permutation(v.begin(), v.end()));
+int Factorial = 1;
+
+

@@ -1,0 +1,38 @@
+#文字列の回転
+#ABC36B 90度
+#ABC04B 180度
+#n*mの図形を回転
+90度    a[N – 1 – m][n]
+180度   a[N – 1 – n][M – 1 – m]
+270度   a[m][M – 1 – n]
+
+##右回転
+int n;
+cin >> n;
+vector<string> s(n);
+rep(i, n) cin >> s[i];
+rep(i, n) rep(j, n) {
+    cout << s[n - 1 - j][i];
+    if (j == n - 1) cout << endl;
+}
+##左回転
+rep(i, n) rep(j, n) {
+    cout << s[j][n - 1 - i];
+    if (j == n - 1) cout << endl;
+}
+
+#180度 の例
+int  n = 4;
+char s[n][n];
+rep(i, n) rep(j, n) cin >> s[i][j];
+rep(i, n) rep(j, n) {
+    cout << s[n - 1 - i][n - 1 - j] << " ";
+    if (j == n - 1) cout << endl;
+}
+
+
+#配列の位置を回転
+rotate
+12345=>23451=>34512
+std::rotate - C++入門
+https://kaworu.jpn.org/cpp/std::rotate

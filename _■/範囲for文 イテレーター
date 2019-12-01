@@ -1,0 +1,46 @@
+C++03のfor文
+vector<int> v;
+for (vector<int>::const_iterator it = v.begin(), e = v.end(); it != e; ++it) {
+  cout << *it << endl;
+}
+
+C++11の範囲for文
+vector<int> v;
+for (auto& e : v) {
+  cout << e << endl;
+}
+
+例
+vi v;
+v.push_back(1);
+v.push_back(2);
+v.push_back(3);
+for (auto x : v) {
+    cout << x << endl;
+}
+
+ll ans = 0;
+for (auto& p : mp) {
+    int s = p.second;
+    ans += (ll)s * (s - 1) / 2;
+}
+cout << ans << endl;
+
+// mapの場合
+map<string, int> mp;  // mp を生成
+for (auto x : mp) {
+    cout << x.first << " " << x.second << "\n";
+}
+
+#範囲の値を書き換え
+for変数宣言時に & を指定しておくと、参照変数となり、
+範囲の要素の値を書き換えることが出来る。
+int ar[] = {3, 1, 4, 1, 5, 9};
+for(int &x : ar) {
+    if( x == 1 )            // 値が１だったら
+        x = 123;           // 123 に書き換える
+}
+// ar[] の内容は {3, 123, 4, 123, 5, 9} に変わっている
+
+
+

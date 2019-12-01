@@ -1,0 +1,37 @@
+#文字列の長さがわからない
+while (cin >> s)
+※これはターミナルで試行できない。
+
+#ALDS1_2_c
+int N;
+scanf("%d%*c", &N);
+card A[N], B[N];
+for (int i = 0; i < N; ++i) {
+    scanf("%c%d%*c", &A[i].suit, &A[i].value);
+    B[i] = A[i];
+}
+例
+5
+H4 C9 S4 D2 C3
+
+%*cは
+*は入力しても捨てるという意味。
+
+#struct
+struct card {
+    char suit;
+    int  value;
+};
+
+int n;
+cin >> n;
+card a[n], b[n];
+rep(i, n) {
+    cin >> a[i].suit >> a[i].value;
+    b[i] = a[i];
+}
+// rep(i, n) {
+//     if (i > 0) cout << " ";
+//     cout << a[i].suit << a[i].value;
+//     cout << b[i].suit << b[i].value;
+// }

@@ -1,0 +1,27 @@
+#優先度付きqueue
+
+#include <bits/stdc++.h>
+using namespace std;
+#define rep(i, n) for (int i = 0, i##_len = (n); i < i##_len; i++)
+
+int main() {
+    int a[] = {5, 4, 6, 3, 7, 2, 8, 1, 9, 0};
+
+    // 降順
+    // priority_queue<int> q;
+    priority_queue<int,  //要素の型
+                   vector<int>,  //内部コンテナはstd::vector (デフォルトのまま)
+                   less<int> >  //降順 (デフォルトはstd::less<T>)
+        q;
+    // 昇順
+    // priority_queue<int, vector<int>, greater<int> > q;
+
+    rep(i, 10) { q.push(a[i]); }
+
+    while (!q.empty()) {
+        cout << q.top() << " ";
+        q.pop();
+    }
+
+    return 0;
+}

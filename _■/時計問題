@@ -1,0 +1,15 @@
+#ABC30
+時計 角度
+// 長針 １時間に30度 1分で0.5度動く
+// 短針 1分で6度動く
+
+int n, m;
+cin >> n >> m;
+
+if (n >= 12) n -= 12;
+double x = n * 30.0 + m * 0.5;
+double y = m * 6.0;
+double a = x - y;
+if (a < 0) a *= -1;
+if (a > 180) a = 360 - a;
+cout << a << endl;

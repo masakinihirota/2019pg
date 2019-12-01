@@ -1,0 +1,24 @@
+for (int i = 2; i <= N; i++) Factorial *= i;
+cout << Factorial << endl;
+
+階乗の数
+
+#include <bits/stdc++.h>
+using namespace std;
+#define vi vector<int>
+
+int main() {
+    for (int j = 2; j <= 6; j++) {
+        int Factorial = 1;
+        for (int i = 2; i <= j; i++) {
+            Factorial *= i;
+        }
+        cout << j << "! = " << Factorial << endl;
+    }
+}
+
+2! = 2
+3! = 6
+4! = 24
+5! = 120
+6! = 720

@@ -1,0 +1,20 @@
+// 最大公約数
+gcd //c++17 から
+// 最小公倍数
+lcm //c++17 から
+__gcd //gcc拡張 c＋＋11でも使える
+
+マクロ
+// 最大公約数
+ll gcd(ll a, ll b) { return b ? gcd(b, a % b) : a; }
+// 最小公倍数
+ll lcm(ll a, ll b) { return a / gcd(a, b) * b; }
+
+再帰版ユークリッドの互除法
+int gcd(int a, int b) {
+    if (a % b == 0) {
+        return (b);
+    } else {
+        return (gcd(b, a % b));
+    }
+}

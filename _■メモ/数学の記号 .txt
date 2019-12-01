@@ -1,0 +1,15 @@
+数学の記号
+
+∀
+すべて
+全称記号(universal quantifier)
+
+∃
+存在
+存在記号(existential quantifier)
+
+
+
+
+
+

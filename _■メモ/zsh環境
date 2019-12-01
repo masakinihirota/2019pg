@@ -1,0 +1,68 @@
+
+反映
+source ~/.zshrc
+
+起動計測
+time ( zsh -i -c exit  )
+
+
+---------------------
+
+#HOMEのpath
+export PATH=$PATH:/mnt/d/2019/pg
+#シェルファイルの収納場所
+export PATH=$PATH:/mnt/d/2019/pg/sh
+
+# 2行表示
+PROMPT="%{${fg[green]}%}[%n@%m]%{${reset_color}%} %~
+%# "
+
+ZSH_THEME="gnzh"
+
+# ZSH_THEME="cloud"
+# ZSH_THEME="robbyrussell"
+# ZSH_THEME="candy"
+# ZSH_THEME="agnoster" #文字化け
+
+#エイリアス
+alias abc='atcodertools_gen.sh'
+alias ABC='atcodertools_gen.sh'
+
+alias sub='atcodertools_submit.sh'
+alias SUB='atcodertools_submit.sh'
+
+alias tes='atcodertools_test.sh'
+alias TES='atcodertools_test.sh'
+
+# plugins=(… zsh-completions)
+# autoload -U compinit && compinit
+
+# HISTFILE=~/.zsh_history
+# HISTSIZE=1000000
+# SAVEHIST=1000000
+# setopt share_history
+# setopt hist_ignore_all_dups
+# setopt hist_ignore_space
+# setopt hist_reduce_blanks
+
+# 色を使用出来るようにする
+# autoload -Uz colors
+# colors
+
+
+
+# 補完
+# 補完機能を有効にする
+# autoload -Uz compinit
+# compinit
+# zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+# zstyle ':completion:*' ignore-parents parent pwd ..
+# zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin /usr/X11R6/bin
+
+# setopt auto_cd
+# setopt auto_pushd
+# setopt pushd_ignore_dups
+
+
+
+

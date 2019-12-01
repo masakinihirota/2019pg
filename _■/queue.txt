@@ -1,0 +1,35 @@
+列の後ろに追加
+push();
+
+最初の値を取り出します。キューから削除はされません。
+front();
+
+キューの先頭を削除します。
+pop();
+
+空かどうか確認
+q1.empty()
+
+#ALDS13B
+ll n, i, basetime;
+cin >> n >> basetime;
+queue<pair<int, string>> que;
+rep(i, n) {
+    string name;
+    int    time;
+    cin >> name >> time;
+    que.push(mp(time, name));
+}
+ll sum = 0;
+while (sz(que)) {
+    auto it = que.front();
+    que.pop();
+    if (it.first > basetime) {
+        it.first -= basetime;
+        sum += basetime;
+        que.push(it);
+    } else {
+        sum += it.first;
+        cout << it.second << " " << sum << endl;
+    }
+}

@@ -1,0 +1,13 @@
+vectorのコピー
+
+vll a;
+vll b = a;
+
+
+
+例
+void func(long long n, std::vector<long long> a) {
+    vll b = a;
+    RSORT(b);
+    rep(i, n) { cout << (a[i] == b[0] ? b[1] : b[0]) << endl; }
+}

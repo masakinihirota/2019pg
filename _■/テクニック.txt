@@ -1,0 +1,410 @@
+transform
+A から B へ変換するといったときに使う．
+よく出る事例は，全て小文字にする tolower と全てを大文字にする toupper
+#include <algorithm>
+std::string src ="abc";
+std::string dst = src;
+// src と dst のサイズが同じでなければダメ．
+std::transform(src.begin(), src.end(), dst.begin(), toupper);
+
+
+
+
+
+
+最小値，最大値のイテレータを返してくれる関数．
+min_element
+max_element
+
+
+
+#find 検索した値の場所を取り出す
+if (find(all(ary), check) != ary.end()) {
+     cout << cnt << endl;
+     break;
+}
+
+// v = { 1, 2, 3, 4, 5 } イテレーターが返る
+find(v.begin(), v.end(), 3); // v.begin() + 2
+find(v.begin(), v.end(), 7); // v.end()
+
+
+
+#nposは-1
+string::npos == -1
+
+
+
+#count 配列内の数を数える
+// v = { 1, 2, 1, 3, 2 }
+count(v.begin(), v.end(), 1); // 2
+
+
+
+#equal 2つのシーケンスが同じかどうか
+// v = { 1, 2, 3 }, w = { 1, 2, 3 }
+equal(v.begin(), v.end(), w.begin()); // true
+w[0] = 2;
+equal(v.begin(), v.end(), w.begin()); // false
+
+
+
+#search 部分列を検索できる。イテレータが返ってくる。
+なお文字列ならfindメソッドで出来る(s.find("hoge")、ただし返り値はインデックス)。
+
+// v = { 1, 2, 3, 4, 5 }, w = { 3, 4 }
+search(v.begin(), v.end(), w.begin(), w.end()); // v.begin() + 2
+
+
+
+#swap 変数の中身を交換する。よく使う。
+// a = 1, b = 2
+swap(a, b); // a = 2, b = 1
+
+
+
+#replace 値を置き換える。
+// v = { 1, 2, 3, 2, 1 }
+replace(v.begin(), v.end(), 2, 4); // v = { 1, 4, 3, 4, 1 }
+
+
+
+#remove ある値を消す。新しい末尾位置を示すイテレータが返ってくる。
+消した個数分、後ろにゴミがくっついている。
+本当に消したい場合はコンテナのeraseなどと併用する必要がある。
+// v = { 1, 2, 3, 2, 1 }, w = { 1, 2, 3, 2, 1 }
+remove(v.begin(), v.end(), 2);                   // v = { 1, 3, 1, ? , ? }
+w.erase(remove(w.begin(), w.end(), 2), w.end()); // w = { 1, 3, 1 }
+
+
+
+#unique 連続した同じ値を消す。
+removeと同様新しい末尾位置を示すイテレータが返ってくる。
+重複を無視して数え上げるときに、多くの場合
+setを使うよりもvectorにpush_backしていき、
+sortしてuniqueしたほうが速い(g++で確認)。
+// v = { 1, 1, 2, 2, 3, 3 }
+v.erase(unique(v.begin(), v.end()), v.end()); // v = { 1, 2, 3 }
+
+
+
+#reverse 逆順に並べ替える。
+単純に逆にしたい時はもちろん、シーケンスを逆にたどるときに
+reverseをしておくとインデキシングが楽になるのでたまに使う。
+// v = { 1, 2, 3, 4, 5 }
+reverse(v.begin(), v.end()); // v = { 5, 4, 3, 2, 1 }
+
+
+
+#rotate シーケンスをシフトする。
+引数がなかなか難しいが、第2引数は操作後に新しく先頭になっている要素のイテレータ。
+// v = { 1, 2, 3, 4, 5 }
+rotate(v.begin(), v.begin() + 2, v.end()); // v = { 3, 4, 5, 1, 2 }
+
+
+
+#random_shuffle ランダムにシャッフルする。
+乱択したい時や、特定の順番の入力に対して弱いアルゴリズムを使う時に
+入力をシャッフルしておくなどの使い方がある。
+// v = { 1, 2, 3, 4, 5 }
+random_shuffle(v.begin(), v.end()); // v = { 3, 5, 2, 4, 1 } (例えばこうなる)
+
+
+
+#sort 昇順ソート
+// v = { 3, 5, 2, 4, 1 }, w = { 3, 5, 2, 4, 1 }
+sort(v.begin(), v.end());   // v = { 1, 2, 3, 4, 5 }
+# 降順ソート
+sort(w.rbegin(), w.rend()); // w = { 5, 4, 3, 2, 1 }
+
+
+
+#lower_bound, upper_bound
+ソート済みのシーケンスに対して、ある値を入れるときに、最も早い/遅い位置の直後のイテレータを返す。
+勝手に二分探索してくれるので便利。
+どちらか一方を覚えておけば大体の状況に対応できる。
+// v = { 1, 2, 2, 3, 3 }
+lower_bound(v.begin(), v.end(), 2); // v.begin() + 1 //以上
+upper_bound(v.begin(), v.end(), 2); // v.begin() + 3 //より大きい
+
+
+
+#binary_search ソート済みのシーケンスに対して、ある値が存在するかを調べる。
+他の操作が必要ない場合はsetを使うことで簡単にかけるので使う頻度は少ないかもしれない。
+// v = { 1, 2, 2, 3, 3 }
+binary_search(v.begin(), v.end(), 2); // true
+binary_search(v.begin(), v.end(), 4); // false
+
+
+
+#max_element, min_element シーケンス中の最大値/最小値「のイテレータ」を返す。
+単純に最大値/最小値が欲しい時のほか、そのインデックスまで分かるため、非常に便利。
+// v = { 3, 5, 2, 4, 1 }
+max_element(v.begin(), v.end());  // v.begin() + 1
+*max_element(v.begin(), v.end()); // 5
+max_element(v.begin(), v.end()) - v.begin(); // 1 (5のインデックス)
+
+
+
+#next_permutation, prev_permutation
+辞書順で次の/前のものに並び替える。
+返り値は、次の/前のものがない場合にfalse、それ以外はtrueになる。
+自分で作るとかなりめんどくさいし、非常に便利。
+全順列を試す場合、再帰するよりもだいたい速い(ただし、枝刈りは難しくなる)。
+99%くらい以下のdo〜whileの形で使う。
+// v = { 1, 2, 3 }
+do{
+  // v は ループごとに
+  //  { 1, 2, 3 }, { 1, 3, 2 },
+  //  { 2, 1, 3 }, { 2, 3, 1 },
+  //  { 3, 1, 2 }, { 3, 2, 1 }
+  // になっている。
+}while(next_permutation(v.begin(), v.end()));
+// ループ後は v = { 1, 2, 3 }
+// 組み合わせを全部試したいときにも使える
+// 3個中2個を選びたい場合は
+// w = { 0, 1, 1 } としておき以下のように出来る。
+do{
+  // w[i] = 1 ならば i 番目のものを選んでいる状態
+  // w[i] = 0 ならば i 番目のものは選んでいない状態
+}while(next_permutation(w.begin(), w.end()));
+
+
+
+#accumulate
+総和を簡単に求められる。
+初期値の型によって結果の型を決めることが出来るのが地味に便利。
+// v = { 1, 2, 3, 4, 5 }
+// w = { "Competitive", "Programming", "Advent", "Calendar" }
+accumulate(v.begin(), v.end(), 0);   // 15、結果はint
+accumulate(v.begin(), v.end(), 0ll); // 15、結果はlong long
+accumulate(v.begin(), v.end(), 1, multiplies<int>()); // 120、結果はint
+accumulate(w.begin(), w.end(), string()); // "CompetitiveProgrammingAdventCalendar"
+
+
+
+#partial_sum
+途中までの和を全部求められる
+この結果を利用してO(1)で部分和を求めることが
+出来ることなどから利用する場面がありそう。
+// v = { 1, 2, 3, 4, 5 }
+// w.size() >= 5 じゃないとダメ
+partial_sum(v.begin(), v.end(), w.begin()); // w = { 1, 3, 6, 10, 15 }
+partial_sum(v.begin(), v.end(), v.begin());
+// vに上書きもできる v = { 1, 3, 6, 10, 15 }
+
+
+
+#functional
+Algorithmの関数に渡せるものが揃っています
+意味は名前の通りなので省略。
+比較系
+equal_to, not_equal_to, greater, less, greater_equal, less_equal
+演算系
+plus, minus, multiplies, divides, modulus, negate
+
+sort(v.begin(), v.end(), greater<int>()); // 降順ソート
+
+
+
+#fill
+fill(f, t, x)
+
+
+#べき乗
+x^2
+z = std::pow(x, 2.0);	// 2乗
+y^3
+z = std::pow(y, 3.0);	// 3乗
+
+
+
+
+
+
+
+
+
+
+
+
+#平方和の平方根
+ベクトルの長さを求めるのに使う
+
+√(x^2+y^2)
+hypot(0.0, 0.0)  = 0.000000
+hypot(1.0, 1.0)  = 1.414214 // ルート2
+hypot(3.0, 4.0)  = 5.000000 // ピタゴラスの定理 三平方の定理
+hypot(+∞, NaN)   = inf
+hypot(3.0, 4.0, 2.0) = 5.385165
+
+void main() {
+    int x1, y1, x2, y2;
+    cin >> x1 >> y1 >> x2 >> y2;
+    // 方法1
+    cout << sqrt( pow(x1 - x2, 2) + pow(y1 - y2, 2) ) << endl;
+
+    // 方法2
+    cout << hypot(x1 - x2, y1 - y2) << endl;
+
+    return 0;
+}
+方法2は、hypot(x間の距離, y間の距離)のようにしている。
+処理内容は方法1と同じ
+
+
+#vector 重複削除
+vector<int> vec = {10, 40, 40, 20, 20, 30, 20, 20, 40};
+sort(all(vec));
+vec.erase(unique(all(vec)), vec.end());
+// >10 20 30 40
+
+#0埋める
+0埋めして順番に出力します。
+例1
+#include <iomanip>
+for(int i=0;i<M;i++){
+    cout << setfill('0') << setw(6) << ans[i].second.first;
+    cout << setfill('0') << setw(6) << ans[i].second.second << endl;
+}
+例2
+rep(i, m) {
+    cout << setfill('0') << right << setw(6) << p[i];
+    cout << setfill('0') << right << setw(6) << num[i];
+    cout << endl;
+}
+
+
+
+#限界値チェック
+for (int i = 0; i < N + 1 : i++) {
+    A[i] = (int)1e9;
+}
+int の巨大数を入れることで
+限界値チェックができる
+
+#数字の各桁の合計 総和
+// 入力
+int n;
+cin >> n;
+int sum = 0;
+int temp = n;
+while (temp > 0) {
+sum += temp % 10;
+temp /= 10;
+}
+
+#桁数が奇数かどうか
+bool f(int x) {
+    int cnt;
+    while (x) {
+        cnt++;
+        x /= 10;
+    }
+    return cnt % 2 == 1;
+}
+
+# 1 列をそれぞれ 2 つに分けた時の合計の差
+
+// 処理
+int s1 = 0;
+int s2 = 0;
+int sumTotal = 0;
+ll minimumValue = LLONG_MAX;
+// 総和を求める
+for (int i = 0; i < n; i++) {
+sumTotal += W[i];
+}
+// cout << sumTotal << endl;
+for (int i = 0; i < n; i++) {
+s1 += W[i];
+s2 = sumTotal - s1;
+if (minimumValue > abs(s1 - s2)) {
+minimumValue = abs(s1 - s2);
+}
+}
+
+#最小値を返す
+三項演算子
+return a < b ? a : b
+min(a,b)
+
+#切り上げ
+(a + (b - 1)) / b;
+例
+7/3 ＝ 2.333..
+(7+(3-1))/3=3
+
+ceil(2.5) 切り上げ
+floor(2.5) 切り捨て
+round(2.5) 四捨五入
+
+a と b の平均を切り上げる場合
+ceil((a + b) / 2)
+
+#四捨五入
+実数型の値に 0.5 を足してから整数型にキャストすると四捨五入されます。
+小数部分が 0.5 未満のとき整数部分は変わらず、
+そうでないとき整数部分が 1 増えるからです。
+(int)( a + 0.5 )
+
+#a を 1 の桁を切り上げる
+例 こっちのほうが優秀
+((a + 9) / 10) X 10
+10 は 10
+11 は 20
+...
+19 は 20
+20 は 20
+
+例
+(a / 10 + 1) X 10;
+10 は 20
+11 は 20
+...
+19 は 20
+20 は 30
+（a%10 は別に処理する必要がある）
+
+# マクロ、関数
+
+const ll mod = 1000000007;
+
+ll mpow(ll x, ll n){ //x^n(mod)
+← 普通に pow(x,n)では溢れてしまうため，
+随時 mod 計算 2 分累乗法だから早い
+
+ll ans = 1;
+while(n != 0){
+if(n&1) ans = ans*x % mod;
+x = x*x % mod;
+n = n >> 1;
+}
+return ans;
+}
+ll inv_mod(ll a){return mpow(a,mod-2);}
+bool square(ll a){ll n=(ll)sqrt(a);return a==n*n;}
+int digitsum(ll N,int a){
+if(N==0) return 0;
+int ret=0;
+ret+=digitsum(N/a,a)+N%a;
+return ret;
+}
+ll gcd(ll x,ll y){return y ? gcd(y,x%y) : x;};//x と y の最大公約数
+ll lcm(ll x,ll y){return x/gcd(x,y)*y;}//x と y の最小公倍数
+
+#
+
+char c = s.front();
+
+#ビット演算子
+数字を2進数にして
+&   どちらも1なら1
+|   どちらかが1なら1
+^   互いに異なれば1
+
+int a = 4;
+int b;
+b = a & 1;
+cout << b << endl;
+ａの値によって変化する、bは0か1になる。

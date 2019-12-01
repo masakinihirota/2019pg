@@ -1,0 +1,74 @@
+map (平衡二分木)
+
+特徴
+要素の要素数に対する対数オーダーでの高速な検索
+内部で要素がソート状態で保持される
+（辞書みたいな使い方が多いと思われる。）
+
+高速な要素検索のみが必要でソートされることに関心がない場合
+unordered_map
+を使う
+
+map<key, value>
+使用例
+map<string, int>
+
+m.size()
+
+要素へのアクセス
+m.at(1)
+
+key検索
+m.find("hoge")
+if ( auto iter = dictionary.find("hoge"); iter != end(dictionary) )
+
+keyの存在証明
+dictionary.find("hoge") != dictionary.end(dictionary)
+countを使うと楽
+dictionary.count("hoge")
+（0,1 しか返さない、countの返り値の型はsize_tなので、暗黙の型変換になる。）
+
+イテレーション
+for (const auto& [key, value] : dictionary){
+    cout << key << " => " << value << "\n";
+}
+
+挿入
+m.insert(make_pair(1,3));
+
+std::map<int,int> dic{};
+dic.emplace(1,3); // dic.insert(std::make_pair(1,3))と同様のことができる
+
+削除
+dic.erase(1); // key(1)の情報は消える
+// 最初のから数えて３つ分消す
+dic.erase(begin(dic), std::next(begin(dic), 3));
+
+clear
+全部消す
+dic.clear();
+
+
+
+
+
+
+
+
+
+
+
+
+
+#ABC137C
+#文字列の一致を調べる
+//文字列を見ていき、同じものが+1 されていく
+//これはハッシュを利用した検索なので O(1)で比較できる
+//==をつかった文字列比較よりも早くなる。
+map<string, int> mp;
+rep(i, n) {
+string s;
+cin >> s;
+sort(all(s));
+mp[s]++;
+}

@@ -1,0 +1,8 @@
+#文字列Sに'a'がいくつ含まれるかを数える
+cout << count(s.begin(), s.end(), 'a') << endl;
+
+
+
+# (char)iが見つからなかったら
+ if (count(all(s), (char)i) == 0) c.push_back((char)i);
+
