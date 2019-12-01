@@ -1,6 +1,6 @@
 number=$1
-atcoder-tools gen ABC${number} --config ./atcodertools.toml
+atcoder-tools gen ABC${number} --config /mnt/y/2019pg/atcodertools.toml
 
 
 
-https://github.com/masakinihirota/2019Web
+
