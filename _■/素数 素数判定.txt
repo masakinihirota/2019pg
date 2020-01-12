@@ -1,0 +1,109 @@
+//素数判定関数
+bool is_prime(ll n)
+{
+	switch (n)
+	{
+	case 0: // fall-through
+	case 1:
+		return false;
+	case 2: // fall-through
+	case 3:
+		return true;
+	} // n > 3 が保証された
+
+	if (n % 2 == 0)
+		return false;
+	if (n % 3 == 0)
+		return false;
+	// 2と3の倍数でないので6の倍数ではないことが保証された
+
+	if (n % 6 != 1 && n % 6 != 5)
+		return false;
+	// 6の倍数前後の数(素数かもしれない数)であることが保証された
+
+	// 6の倍数前後の数を使って試し割りをする
+	for (unsigned i = 5; i * i <= n; i += 6)
+	{
+		if (n % i == 0)
+			return false; // 6n-1
+		if (n % (i + 2) == 0)
+			return false; // 6n+1
+	}
+
+	return true;
+}
+
+/////////////////////////////////
+
+// sqrt版
+bool IsPrime(int num)
+{
+    if (num < 2) return false;
+    else if (num == 2) return true;
+    else if (num % 2 == 0) return false; // 偶数はあらかじめ除く
+
+    double sqrtNum = sqrt(num);
+    for (int i = 3; i <= sqrtNum; i += 2)
+    {
+        if (num % i == 0)
+        {
+            // 素数ではない
+            return false;
+        }
+    }
+
+    // 素数である
+    return true;
+}
+
+// 簡易版
+bool is_prime(int num) {
+    if (num < 2)
+        return false;
+    else if (num == 2)
+        return true;
+    else if (num % 2 == 0)
+        return false;
+    for (int i = 3; i < num; i += 2) {
+        if (num % i == 0) {
+            return false;
+        }
+    }
+    return true;
+}
+
+#################
+#include <math.h>
+
+// i ~ N-1の範囲にNの約数が存在するか
+bool has_divisor(ll N, int i) {
+    // ベースケース1
+    if (i == N - 1) {
+        return (N % i == 0);
+    }
+    // ベースケース2
+    if (N % i == 0) {
+        // 実際にiはNの約数なので、i ~ N-1の範囲に約数が存在する
+        return true;
+    }
+
+    // 再帰ステップ
+    // i+1 ~ N-1の範囲の結果がi ~ N-1の範囲の結果となる
+    // (ベースケース2によって、iがNの約数の場合は取り除かれているので、あとはi+1
+    // ~ N-1の範囲を調べればよい)
+    return has_divisor(N, i + 1);
+}
+
+// 5桁くらいまで それ以上はオーバーフロー
+bool is_prime(ll N) {
+    if (N == 1) {
+        // 1は素数ではない
+        return false;
+    } else if (N == 2) {
+        // 2は素数
+        return true;
+    } else {
+        // 2~(N-1)の範囲に約数が無ければ、Nは素数
+        return !has_divisor(N, 2);
+    }
+}
